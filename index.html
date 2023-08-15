@@ -10,31 +10,40 @@
 
 <body>
     <!-- This will be the link that takes you to all the high scores to of the test -->
-    <div class="scores">
-        <p><a href="#">View high scores</a></p>
+    <div id="scores">
+        <a href="#">View high scores</a>
     </div>
     <!-- This is the timer -->
-    <div class="timer">
-        <p>Time:</p>
+    <div id="timer">
+        <p>Time: <span id="time">0</span></p>
     </div>
-    <!-- This container will be the questions that will hide and unhide -->
-    <div class="wrapper">
-        <div id="start page" class="hide">
+
+    <!-- The will be the master container  -->
+    <div id="wrapper">
+        <div id="startPage">
             <h1>Coding Quiz Challenge</h1>
             <p>Are you ready to challenge yourself with a code quiz?</p>
             <button id="start" class="btn">Start Quiz</button>
         </div>
-        <div id="questions">
+        <!-- This container will be the questions that will hide and unhide -->
+        <div id="questions" class="hide">
             <h2 id="question-title"></h2>
             <div id="choices" class="choices"></div>
         </div>
-    </div>
-<!-- The will be the master container but im not sure what to put inside the div -->
-    <div>
-        
+        <!-- This container will be the final score and output   -->
+
+        <div id="end-screen" class="hide">
+            <h2>Finished!</h2>
+            <p>Final score is <span id="final-score"></span>.</p>
+            <p>
+                Enter initials: <input type="text" id="initials" max="3" />
+                <button id="submit">Submit</button>
+            </p>
+        </div>
+
+        <div id="feedback" class="feedback hide"></div>
     </div>
 
     <script src="./Assets/js/script.js"></script>
 </body>
-
 </html>
