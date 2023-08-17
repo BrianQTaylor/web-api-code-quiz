@@ -36,7 +36,7 @@ var startBtnEl = document.querySelector("#start")
 var questionsEL = document.querySelector("#questions")
 var timerEl = document.querySelector("#time")
 var choicesEl = document.querySelector('#choices')
-var sumbitBtn = document.querySelector('#sumbit')
+var sumbitBtnEl = document.querySelector('#sumbit')
 var initialsEl = document.querySelector('#initials')
 var feedbackEl = document.querySelector('#feedback')
 
@@ -66,7 +66,30 @@ function startQuiz() {
 // forLoop
 function getQuestion() {
 
+    var currentQuestion = questions[currentQuestionIndex];
+
+    var titleEl = document.getElementById("question-title");
+
+    titleEl.textContent = currentQuestion.title;
+
+    choicesEl.innerHTML = "";
+
+    currentQuestion.choices.forEach(function (choice, i) {
+
+        var choiceNode = document.createElement("button");
+        
+        choiceNode.setAttribute('class','choice');
+
+        choiceNode.setAttribute('value', choice);
+
+choiceNode.onClick = questionClick;
+
+choicesEl.appendChild(choiceNode);
+
+    });
 }
+
+// Here I will create a function that will penalize test takers for getting questions wrong
 
 
 
@@ -91,7 +114,8 @@ function clock() {
 
 
 
-
+// This is my click button that will save the highscores
+startBtnEl.addEventListener("click", saveHighscore)
 
 
 // This is my click button that will hide my my start screen
