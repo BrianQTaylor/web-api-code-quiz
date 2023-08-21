@@ -34,7 +34,7 @@ console.log(questions)
 // Global variables on HTML
 var startBtnEl = document.querySelector("#start")
 var questionsEL = document.querySelector("#questions")
-var timerEl = document.querySelector("#time")
+var timerEl = document.querySelector("#timer")
 var choicesEl = document.querySelector('#choices')
 var sumbitBtnEl = document.querySelector('#sumbit')
 var initialsEl = document.querySelector('#initials')
@@ -82,7 +82,7 @@ function getQuestion() {
 
         choiceNode.setAttribute('value', choice);
 
-choiceNode.onClick = questionClick;
+choiceNode.onClick = click;
 
 choicesEl.appendChild(choiceNode);
 
@@ -90,6 +90,37 @@ choicesEl.appendChild(choiceNode);
 }
 
 // Here I will create a function that will penalize test takers for getting questions wrong
+function click () {
+if (this.value !== questions[qIndex].answer){
+    time -= 15;
+    if(time < 0) {
+        time = 0
+    }
+
+    timerEl.textContent = time
+    feedbackEl.textContent = "Wrong";
+    feedbackEl.style.fontSize = "150px";
+  } 
+  else {
+    feedbackEl.textContent = "Correct";
+    feedbackEl.style.fontSize = "150px";
+}
+
+feedbackEl.setAttribute("class", "feedback");
+setTimeout(function () {
+    feedbackEl.setAttribute("class", "feedback hide");
+
+},1500)
+
+qIndex++
+
+if (qIndex === question.length) {
+    endQuiz();}
+    else {
+        getQuestion();
+    }
+}
+
 
 
 
